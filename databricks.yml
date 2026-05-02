@@ -1,0 +1,19 @@
+bundle:
+  name: databricks-github-actions-ci-cd-demo
+
+targets:
+  prod:
+    workspace:
+      host: https://adb-7405609254683450.10.azuredatabricks.net/ # Your Azure Workspace URL
+    resources:
+      jobs:
+        transaction_cleaning_job:
+          name: "Prod_Transaction_Cleaning"
+          tasks:
+            - task_key: clean_csv_task
+              new_cluster:
+                spark_version: "14.3.x-scala2.12"
+                node_type_id: "Standard_DS3_v2"
+                num_workers: 1
+              spark_python_task:
+                python_file: ./src/transaction.py
