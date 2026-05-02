@@ -4,7 +4,7 @@ bundle:
 targets:
   prod:
     workspace:
-      host: https://adb-7405609254683450.10.azuredatabricks.net/ # Your Azure Workspace URL
+      host: ${{ secrets.host }} # Your Azure Workspace URL
     resources:
       jobs:
         transaction_cleaning_job:
